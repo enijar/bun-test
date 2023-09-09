@@ -1,5 +1,5 @@
 import React from "react";
-import { renderToNodeStream, renderToReadableStream } from "react-dom/server";
+import { renderToReadableStream } from "react-dom/server";
 import Client from "./client";
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 
