@@ -18,6 +18,10 @@ export default function Client({ styles, location }: Props) {
           content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0"
         />
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+        <meta
+          name="description"
+          content="Playing around with Bun 1.0: React SSR, Styled Components, and React Router DOM."
+        />
         <title>App</title>
         {styles ?? <AppStyles />}
         <script dangerouslySetInnerHTML={{ __html: `window.process = { env: { NODE_ENV: 'production' } }` }} />
