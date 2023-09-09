@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "types": ["bun-types"],
+    "lib": ["DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "moduleResolution": "nodenext"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}
