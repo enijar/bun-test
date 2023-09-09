@@ -6,10 +6,10 @@ import Client from "./client";
 const currentFile = new URL(import.meta.url);
 const basePath = currentFile.pathname.replace(/\/src\/server\.tsx$/, "");
 const buildPath = `${basePath}/build`;
+const publicPath = `${basePath}/public`;
 
-export async function fetch(req: Request) {
-  const url = new URL(req.url);
-  const filePath = `${buildPath}${url.pathname}`;
+async function serve(path: string, url: URL) {
+  const filePath = `${path}${url.pathname}`;
   const file = Bun.file(filePath);
   if (await file.exists()) {
     return new Response(file.stream(), {
@@ -18,6 +18,16 @@ export async function fetch(req: Request) {
         "Content-Length": file.size.toString(),
       },
     });
+  }
+  return null;
+}
+
+export async function fetch(req: Request) {
+  const url = new URL(req.url);
+  const serves = await Promise.all([serve(buildPath, url), serve(publicPath, url)]);
+  const served = serves.find((served) => served !== null) ?? null;
+  if (served !== null) {
+    return served;
   }
   const sheet = new ServerStyleSheet();
   try {
