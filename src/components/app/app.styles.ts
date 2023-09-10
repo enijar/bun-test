@@ -9,4 +9,14 @@ export const AppStyles = createGlobalStyle`
     color-scheme: light dark;
     font-family: system-ui, sans-serif;
   }
+
+  a {
+    color: #000000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    a {
+      color: #ffffff;
+    }
+  }
 `;
